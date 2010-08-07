@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Upload</h1>
+
+
+<form action="http://api.freamware.net/2.1/upload.picture" method="POST" enctype="multipart/form-data">
+	<input name="file" type="file" /><br />
+	<input name="username" type="hidden" value="{{ request.user.username }}">
+	<input type="submit" value="Rufflada">
+	<input type="hidden" name="redirect" value="true">
+</form>
+
+{% endblock %}

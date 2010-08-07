@@ -1,0 +1,6 @@
+# to install use:
+#  pip install -r req.txt
+
+Django >= 1.2
+-e git+http://github.com/ericflo/django-pagination.git#egg=django-pagination
+django-tagging

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load tagging_tags %}
+
+{% block content %}
+<h1>{% if picture.title %}{{ picture.title }}{% else %}Picture{% endif %}</h1>
+<p>Posted by <a href="{% url freamware_profile picture.user.username %}">{{ picture.user}}</a> on {{picture.creation_time}}</p>
+
+Tags: 
+{% tags_for_object picture as picture_tags %}
+{% for tag in picture_tags %}
+<a href="{% url tag_detail tag %}">{{tag.name}}</a>
+{% endfor %}
+
+<form action="+save_tags" method="POST">
+<input type="text" name="tags" value="{{ tags }}">
+<input type="submit" value="Save">
+{% csrf_token %}
+</form>
+
+
+
+<img src="{{ picture.url }}" / >
+
+{% if picture.description %}<h3>About this Picture</h3><p>{{ picture.description }}</p>{% endif %}
+
+
+
+
+{% endblock %}

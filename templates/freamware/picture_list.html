@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% load tagging_tags %}
+
+
+{% block content %}
+<div>
+    Tagged as {{ tag }}<br />
+	{% tagged_objects tag in freamware.Picture as objs %}
+	{% for obj in objs %}
+        <a href="{% url freamware_user_picture_detail obj.user.username obj.slug %}">{{ obj.title }}</a>
+    {% endfor %}
+</div>
+
+{% endblock %}
